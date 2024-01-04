@@ -1,14 +1,15 @@
-package com.example.clients_api.service;
+package com.example.clients_api.service.impl;
 
 import com.example.clients_api.model.Client;
 import com.example.clients_api.repository.ClientRepository;
+import com.example.clients_api.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository repository;
