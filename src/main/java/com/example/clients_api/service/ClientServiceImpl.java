@@ -3,6 +3,8 @@ package com.example.clients_api.service;
 import com.example.clients_api.model.Client;
 import com.example.clients_api.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,8 @@ public class ClientServiceImpl implements ClientService{
     private ClientRepository repository;
 
     @Override
-    public List<Client> getClients() {
-        return repository.findAll();
+    public Page<Client> getClients(String firstName, int page, int size) {
+        return repository.findByFirstNameContaining(firstName, PageRequest.of(page, size));
     }
 
     @Override

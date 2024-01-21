@@ -1,12 +1,10 @@
 package com.example.clients_api.service;
 
 import com.example.clients_api.model.Client;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface ClientService {
-    List<Client> getClients();
+    Page<Client> getClients(String name, int page, int size);
 
     void addClient(Client client);
 
