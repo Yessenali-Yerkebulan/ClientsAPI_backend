@@ -42,11 +42,10 @@ public class ExcelExportServiceImpl implements ExcelExportService {
                 sheet.addCell(new Label(4, i + 1, client.getEmail()));
                 sheet.addCell(new Label(5, i + 1, client.getCountry()));
             }
-
-            workbook.write();
         } finally {
             // Close the workbook even if an exception occurs
             if (workbook != null) {
+                workbook.write();
                 workbook.close();
             }
         }

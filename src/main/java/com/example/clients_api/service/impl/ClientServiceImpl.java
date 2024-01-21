@@ -2,6 +2,7 @@ package com.example.clients_api.service.impl;
 
 import com.example.clients_api.model.Client;
 import com.example.clients_api.repository.ClientRepository;
+import com.example.clients_api.repository.ClientRepositoryJpa;
 import com.example.clients_api.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,9 +17,19 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientRepository repository;
 
+    @Autowired
+    private ClientRepositoryJpa jpaRepository;
+
+
+
     @Override
     public Page<Client> getClients(String firstName, int page, int size) {
         return repository.findByFirstNameContaining(firstName, PageRequest.of(page, size));
+    }
+
+    @Override
+    public List<Client> getAllClients() {
+        return jpaRepository.findAll();
     }
 
     @Override
